@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "Cinema_Info_Viewer.Controllers.ContentController",
+    "Method": "GetAll",
+    "RelativePath": "api/Content",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Cinema_Info_Viewer.Models.DbMiracle.Content, Cinema-Info-Viewer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
