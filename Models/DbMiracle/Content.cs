@@ -8,5 +8,10 @@
         public DateOnly? ReleaseDate { get; set; }
         public List<string>? ContentFormat { get; set; }
         public int? Duration { get; set; }
+        public bool? IsAdvanceReport { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public List<string>? AudioLangs { get; set; }
+        public List<string>? SubtitleLangs { get; set; }
+        public string? RatingId { get; set; }
     }
 }

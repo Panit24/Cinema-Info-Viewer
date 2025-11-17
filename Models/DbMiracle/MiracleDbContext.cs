@@ -40,6 +40,21 @@ namespace Cinema_Info_Viewer.Models.DbMiracle
 
                 entity.Property(e => e.Duration)
                     .HasColumnName("duration");
+
+                entity.Property(e => e.IsAdvanceReport)
+                    .HasColumnName("is_advance_report");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at");
+
+                entity.Property(e => e.AudioLangs)
+                    .HasColumnName("audio_langs");
+
+                entity.Property(e => e.SubtitleLangs)
+                    .HasColumnName("subtitle_langs");
+
+                entity.Property(e => e.RatingId)
+                    .HasColumnName("rating_id");
             });
         }
     }
