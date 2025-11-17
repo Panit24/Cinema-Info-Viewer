@@ -10,8 +10,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+//builder.Services.AddDbContext<MiracleDbContext>(options =>
+//    options.UseNpgsql(builder.Configuration.GetConnectionString("MiracleDb")));
+
+// Add DbContext for PostgreSQL with JSON support
 builder.Services.AddDbContext<MiracleDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("MiracleDb")));
+{
+    var dataSourceBuilder = new Npgsql.NpgsqlDataSourceBuilder(
+        builder.Configuration.GetConnectionString("MiracleDb"));
+
+    // Enable dynamic JSON serialization for jsonb columns
+    dataSourceBuilder.EnableDynamicJson();
+
+    var dataSource = dataSourceBuilder.Build();
+    options.UseNpgsql(dataSource);
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

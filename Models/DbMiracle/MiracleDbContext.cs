@@ -25,7 +25,7 @@ namespace Cinema_Info_Viewer.Models.DbMiracle
                 entity.Property(e => e.Id)
                     .HasColumnName("id");
 
-                entity.Property(e => e.ShortName)
+                entity.Property(e => e.Title)
                     .HasColumnName("short_name")
                     .HasMaxLength(255);
 
@@ -34,6 +34,12 @@ namespace Cinema_Info_Viewer.Models.DbMiracle
 
                 entity.Property(e => e.ReleaseDate)
                     .HasColumnName("release_date");
+
+                entity.Property(e => e.ContentFormat)
+                    .HasColumnName("content_format");
+
+                entity.Property(e => e.Duration)
+                    .HasColumnName("duration");
             });
         }
     }
