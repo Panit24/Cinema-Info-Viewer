@@ -35,4 +35,52 @@ public class ContentController : ControllerBase
         return content;
     }
 
+    // DELETE: api/content/{id}
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var content = await _context.Contents.FindAsync(id);
+
+        if(content == null)
+        {
+            return NotFound(); // 404
+        }
+
+        _context.Contents.Remove(content);
+        await _context.SaveChangesAsync();
+
+        return NoContent(); // 204
+    }
+
+    public async Task<Content> CreateContentAsync(Content model)
+    {
+        model.Id = Guid.NewGuid();
+        model.CreatedAt = DateTime.UtcNow;
+
+        _context.Contents.Add(model);
+        await _context.SaveChangesAsync();
+
+        return model;
+    }
+
+    public async Task<Content?> UpdateContentAsync(Guid id,Content updated)
+    {
+        var existing = await _context.Contents.FirstOrDefaultAsync(c => c.Id == id);
+        if (existing == null)
+            return null;
+
+        existing.Title = updated.Title;
+        existing.DistributorId = updated.DistributorId;
+        existing.ReleaseDate = updated.ReleaseDate;
+        existing.ContentFormat = updated.ContentFormat;
+        existing.Duration = updated.Duration;
+        existing.IsAdvanceReport = updated.IsAdvanceReport;
+        existing.AudioLangs = updated.AudioLangs;
+        existing.SubtitleLangs = updated.SubtitleLangs;
+        existing.RatingId = updated.RatingId;
+
+        await _context.SaveChangesAsync();
+
+        return existing;
+    }
 }

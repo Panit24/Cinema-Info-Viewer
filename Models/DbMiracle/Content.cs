@@ -12,6 +12,6 @@
         public DateTime? CreatedAt { get; set; }
         public List<string>? AudioLangs { get; set; }
         public List<string>? SubtitleLangs { get; set; }
-        public string? RatingId { get; set; }
+        public string? RatingId { get; set; } 
     }
 }
