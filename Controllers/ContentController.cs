@@ -21,4 +21,18 @@ public class ContentController : ControllerBase
     {
         return await _context.Contents.ToListAsync();
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Content>> GetById(Guid id)
+    {
+        var content = await _context.Contents.FindAsync(id);
+
+        if (content == null)
+        {
+            return NotFound();
+        }
+
+        return content;
+    }
+
 }
